@@ -165,11 +165,6 @@ def plot_greeks(K: float = 100, t: float = 1,
 
     fig, axes = plt.subplots(2, 3, figsize=(14, 8))
 
-    for ax in axes.flat:
-        ax.set_xlabel("Spot price S")
-        ax.axvline(K, color="gray", linestyle="--", linewidth=0.8)
-        ax.grid(True)
-
     axes[0, 0].plot(spots, deltas_call, label="Call")
     axes[0, 0].plot(spots, deltas_put, label="Put")
     axes[0, 0].set_title("Delta")
@@ -191,7 +186,12 @@ def plot_greeks(K: float = 100, t: float = 1,
     axes[1, 1].set_title("Rho")
     axes[1, 1].legend()
 
-    axes[1, 2].axis("off")
+    fig.delaxes(axes[1, 2])
+
+    for ax in axes.flat:
+        ax.set_xlabel("Spot price S")
+        ax.axvline(K, color="gray", linestyle="--", linewidth=0.8)
+        ax.grid(True)
 
     fig.suptitle("Black-Scholes Greeks vs spot")
     fig.tight_layout()
