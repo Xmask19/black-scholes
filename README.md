@@ -6,7 +6,7 @@ An implementation of the Black-Scholes formula in Python, with extensions for Gr
 
 - [x] Stage 1: Core formula
 - [x] Stage 2: Put prices and plots
-- [ ] Stage 3: Greeks
+- [x] Stage 3: Greeks
 - [ ] Stage 4: Monte Carlo
 
 ## Setup
