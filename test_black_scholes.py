@@ -21,6 +21,7 @@ from black_scholes import (
     theta_put,
     rho_call,
     rho_put,
+    monte_carlo_call_price,
 )
 
 from math import exp
@@ -92,3 +93,26 @@ def test_delta_parity():
     diff = (delta_call(S0, K0, T0, R0, SIGMA0) -
             delta_put(S0, K0, T0, R0, SIGMA0))
     assert diff == pytest.approx(1.0, abs=1e-12)
+
+
+# --- Monte Carlo ----------------------------------------------------
+def test_monte_carlo_close_to_closed_form():
+    """Monte Carlo should be within a few standard errors of closed form."""
+    closed = call_price(S0, K0, T0, R0, SIGMA0)
+    mc, stderr = monte_carlo_call_price(
+        S0, K0, T0, R0, SIGMA0, n=200_000, seed=19
+    )
+    assert abs(mc - closed) < 4 * stderr
+
+
+def test_monte_carlo_standard_error_decreases():
+    """More paths means smaller standard error."""
+    _, se_small = monte_carlo_call_price(
+        S0, K0, T0, R0, SIGMA0, n=10_000, seed=19
+    )
+    _, se_large = monte_carlo_call_price(
+        S0, K0, T0, R0, SIGMA0, n=100_000, seed=19
+    )
+    assert se_large < se_small
+    # SE scales like 1/sqrt(n): 10x paths -> ~3.16x smaller SE.
+    assert se_small / se_large > 2.0
