@@ -14,14 +14,22 @@ Implementation of the Black-Scholes formula using Python, for European-style opt
 
 The Black-Scholes price of a European call is
 
-    C = S N(d1) - K exp(-rT) N(d2)
+$$
+C = S N(d_1) - K e^{-rT} N(d_2)
+$$
 
 where
 
-    d1 = (ln(S/K) + (r + sigma^2 / 2) T) / (sigma sqrt(T))
-    d2 = d1 - sigma sqrt(T)
+$$
+d_1 = \frac{\ln(S/K) + (r + \sigma^2/2)T}{\sigma\sqrt{T}}
+$$
 
-and N(x) denotes the standard normal cumulative distribution function.
+$$
+d_2 = d_1 - \sigma\sqrt{T}
+$$
+
+and $N(\cdot)$ denotes the standard normal cumulative distribution
+function.
 
 
 The Black-Scholes price is the cost of replicating the option's payoff using the stock and a risk-free bond. A portfolio of the stock and the bond that replicates the option's payoff must cost the same as the option, by no-arbitrage.
