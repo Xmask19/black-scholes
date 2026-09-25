@@ -129,7 +129,9 @@ portfolio. Key things I took away:
 
 ## References
 
+- MIT OpenCourseWare, *18.600 Probability and Random Variables*
+  (Fall 2019), especially Lecture 36 on call functions and
+  Black-Scholes: for the risk-neutral pricing framework and the
+  derivation of the closed-form formula.
 - Wikipedia, *Black–Scholes model*: for the closed-form pricing
   formula, the derivation, and the definitions of the Greeks.
-- MIT OpenCourseWare, *Fall 2019 Probability and Random Variables*:
-  for background on the probabilistic foundations of the model.
