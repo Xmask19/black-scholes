@@ -62,6 +62,8 @@ Three plots are written to `output/`:
 
 ![Greeks vs spot](output/greeks.png)
 
+![Monte Carlo convergence](output/monte_carlo_convergence.png)
+
 ## Tests
 
     python -m pytest -v
